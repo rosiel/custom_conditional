@@ -30,7 +30,7 @@ function custom_conditional_form_alter(&$form, \Drupal\Core\Form\FormStateInterf
     );
     $states_when_type_is_p303 = array(
       'visible' => array(
-        ':input[name="field_class_type[Pole 303"]' => array('checked' => TRUE),
+        ':input[name="field_class_type[Pole 303]"]' => array('checked' => TRUE),
       ),
     );
     $states_when_type_is_h101 = array(
