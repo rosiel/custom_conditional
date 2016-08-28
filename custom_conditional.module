@@ -1,0 +1,91 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\HttpFoundation\Request;
+
+
+/**
+ * Implements hook_form_alter().
+ */
+
+function custom_conditional_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id != 'contact_message_feedback_form') {
+    return;
+  }
+  if (isset($form['field_class_type'])) {
+    $states_when_type_is_entry = array(
+      'visible' => array(
+        ':input[name="field_class_type[Entry]"]' => array('checked' => TRUE),
+      ),
+    );
+    $states_when_type_is_p101 = array(
+      'visible' => array(
+        ':input[name="field_class_type[Pole 101]"]' => array('checked' => TRUE),
+      ),
+    );
+    $states_when_type_is_p202 = array(
+      'visible' => array(
+        ':input[name="field_class_type[Pole 202]"]' => array('checked' => TRUE),
+      ),
+    );
+    $states_when_type_is_p303 = array(
+      'visible' => array(
+        ':input[name="field_class_type[Pole 303"]' => array('checked' => TRUE),
+      ),
+    );
+    $states_when_type_is_h101 = array(
+      'visible' => array(
+        ':input[name="field_class_type[Hammock 101]"]' => array('checked' => TRUE),
+      ),
+    );
+    $states_when_type_is_h202 = array(
+      'visible' => array(
+        ':input[name="field_class_type[Hammock 202]"]' => array('checked' => TRUE),
+      ),
+    );
+    $states_when_type_is_h303 = array(
+      'visible' => array(
+        ':input[name="field_class_type[Hammock 303]"]' => array('checked' => TRUE),
+      ),
+    );
+    $states_when_type_is_extra = array(
+      'visible' => array(
+        ':input[name="field_class_type[Extra Classes]"]' => array('checked' => TRUE),
+      ),
+    );
+    $states_when_type_is_open = array(
+      'visible' => array(
+        ':input[name="field_class_type[Open Studio]"]' => array('checked' => TRUE),
+      ),
+    );
+
+    if (isset($form['field_entry_dates'])) {
+      $form['field_entry_dates']['#states'] = $states_when_type_is_entry;
+    }
+
+    if (isset($form['field_p101_dates'])) {
+      $form['field_p101_dates']['#states'] = $states_when_type_is_p101;
+    };
+    if (isset($form['field_p202_dates'])) {
+      $form['field_p202_dates']['#states'] = $states_when_type_is_p202;
+    };
+    if (isset($form['field_p303_dates'])) {
+      $form['field_p303_dates']['#states'] = $states_when_type_is_p303;
+    };
+    if (isset($form['field_h101_dates'])) {
+      $form['field_h101_dates']['#states'] = $states_when_type_is_h101;
+    };
+    if (isset($form['field_h202_dates'])) {
+      $form['field_h202_dates']['#states'] = $states_when_type_is_h202;
+    };
+    if (isset($form['field_h303_dates'])) {
+      $form['field_h303_dates']['#states'] = $states_when_type_is_h303;
+    };
+    if (isset($form['field_extra_dates'])) {
+      $form['field_extra_dates']['#states'] = $states_when_type_is_extra;
+    };
+    if (isset($form['field_open_dates'])) {
+      $form['field_open_dates']['#states'] = $states_when_type_is_open;
+    };
+  }
+}

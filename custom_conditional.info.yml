@@ -1,0 +1,6 @@
+name: Custom Conditional
+description: 'Provides conditional form elements using states.'
+package: Custom
+# version: VERSION
+core: 8.x
+type: module
